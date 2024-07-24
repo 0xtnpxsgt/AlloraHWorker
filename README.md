@@ -91,7 +91,7 @@ cd
 wget https://raw.githubusercontent.com/0xtnpxsgt/AlloraHWorker/main/allorahuggingface.sh && chmod +x allorahuggingface.sh && ./allorahuggingface.sh
 ```
 
-#### Step 5: 
+## Step 5: 
 - Here change the no: 5 with your topic id `huggingmodel5/worker/config.yaml`
 ```bash
 nano huggingmodel5/worker/app.py
@@ -103,7 +103,7 @@ nano huggingmodel5/worker/app.py
 ![image](https://github.com/user-attachments/assets/3a17b3b4-4cf8-4677-bf31-cbcdd079f516)
 
 
-#### Step 6: Get Wallet Hex PK & Edit Config file
+## Step 6: Get Wallet Hex PK & Edit Config file
 ```bash
 # Hex Pk
 
@@ -119,19 +119,19 @@ nano huggingmodel5/worker/config.yaml
 
 ![Screenshot 2024-07-24 101210](https://github.com/user-attachments/assets/2132c9ca-2d0f-46c6-a2ea-5db9096fe6e6)
 
-#### Step 7: Build your Worker
+## Step 7: Build your Worker
 ```bash
 docker compose -f prod-docker-compose.yaml up --build -d
 ```
 
-#### Step 8: Check Logs
+## Step 8: Check Logs
 ```bash
 docker compose -f prod-docker-compose.yaml logs -f
 ```
 ![image](https://github.com/user-attachments/assets/5fbed3cc-7cf8-4f6b-8329-7f9b37ddf77a)
 
 
-#### TEST WORKER
+## TEST WORKER
 ```bash
 curl http://localhost:8000/inference/ETH
 ```
