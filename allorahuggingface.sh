@@ -43,10 +43,6 @@ if [[ "$installdep" =~ ^[Yy]$ ]]; then
     execute_with_prompt "sudo apt update -y && sudo apt upgrade -y"
     echo
     
-    echo -e "${BOLD}${DARK_YELLOW}Installing packages...${RESET}"
-    execute_with_prompt "sudo apt-get install -y apt-transport-https software-properties-common ca-certificates zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev curl git wget make jq build-essential pkg-config lsb-release libssl-dev libreadline-dev libffi-dev gcc screen unzip lz4"
-    echo
-    
     echo -e "${BOLD}${DARK_YELLOW}Installing python3...${RESET}"
     execute_with_prompt "sudo apt install python3 python3-pip -y"
     echo
