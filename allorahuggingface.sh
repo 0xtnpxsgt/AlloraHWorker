@@ -51,25 +51,6 @@ if [[ "$installdep" =~ ^[Yy]$ ]]; then
     execute_with_prompt "sudo apt install python3 python3-pip -y"
     echo
     
-    echo -e "${BOLD}${DARK_YELLOW}Installing Docker...${RESET}"
-    execute_with_prompt 'sudo install -m 0755 -d /etc/apt/keyrings'
-    echo
-    execute_with_prompt 'sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc'
-    echo
-    execute_with_prompt 'sudo chmod a+r /etc/apt/keyrings/docker.asc'
-    echo
-    execute_with_prompt 'echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null'
-    echo
-	execute_with_prompt 'sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin'
-    echo
-    
-    echo -e "${BOLD}${DARK_YELLOW}Checking docker version...${RESET}"
-    execute_with_prompt 'docker version'
-    echo
-    
     echo -e "${BOLD}${DARK_YELLOW}Installing Docker Compose...${RESET}"
     VER=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep tag_name | cut -d '"' -f 4)
     echo
@@ -84,15 +65,6 @@ if [[ "$installdep" =~ ^[Yy]$ ]]; then
 	
 	
     
-    echo -e "${BOLD}${DARK_YELLOW}Installing Go...${RESET}"
-    execute_with_prompt 'sudo rm -rf /usr/local/go'
-    echo
-    execute_with_prompt 'curl -L https://go.dev/dl/go1.22.4.linux-amd64.tar.gz | sudo tar -xzf - -C /usr/local'
-    echo
-    execute_with_prompt 'echo 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin' >> $HOME/.bash_profile && echo 'export PATH=$PATH:$(go env GOPATH)/bin' >> $HOME/.bash_profile'
-    echo
-    execute_with_prompt 'source $HOME/.bash_profile'
-    echo
 
     echo -e "${BOLD}${DARK_YELLOW}Checking go version...${RESET}"
     execute_with_prompt 'go version'
