@@ -23,7 +23,7 @@ docker rm -f $(docker ps -a -q);docker system prune --volumes -a -f
 ```
 --------------------------------------------------------------------
 
-#### Step 1: 
+## Step 1: 
 
 ## Update APT
 ```bash
@@ -35,7 +35,7 @@ sudo apt-get update
 sudo apt-get install -y apt-transport-https software-properties-common ca-certificates zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev curl git wget make jq build-essential pkg-config lsb-release libssl-dev libreadline-dev libffi-dev gcc screen unzip lz4 
 ```
 
-#### Step 2: 
+## Step 2: 
 ```bash
 pip install allocmd --upgrade
 ```
@@ -67,7 +67,7 @@ sudo groupadd docker && sudo usermod -aG docker $USER
 docker version
 ```
 
-#### Step 3: Add Docker User Perm
+## Step 3: Add Docker User Perm
 ```bash
 sudo groupadd docker && sudo usermod -aG docker $USER
 ```
@@ -84,7 +84,7 @@ cd allora-chain && make all
 allorad version
 ```
 
-#### Step 4: Install Worker
+## Step 4: Install Worker
 ```bash
 wget https://raw.githubusercontent.com/0xtnpxsgt/AlloraHWorker/main/allorahuggingface.sh && chmod +x allorahuggingface.sh && ./allorahuggingface.sh
 ```
