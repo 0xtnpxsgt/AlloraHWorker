@@ -29,7 +29,7 @@ pip install allocmd --upgrade
 #### Step 3: Install Allora ( This will take time )
 ```bash
 rm -rf allora.sh
-wget https://raw.githubusercontent.com/ReJumpLabs/Hugging-Face-model/main/allorahuggingface.sh && chmod +x allorahuggingface.shh && ./allorahuggingface.sh
+wget https://raw.githubusercontent.com/0xtnpxsgt/AlloraHWorker/main/allorahuggingface.sh && chmod +x allorahuggingface.shh && ./allorahuggingface.sh
 ```
 - In the middle of the command execution, it will ask for keyring phrase, Here you need write a password (example : 12345678)
 - During pasting `HEAD_ID` , Don't use `Ctrl+C` to copy and `Ctrl+V` to paste, instead just select the whole `KEY_ID` and Press Right Click
