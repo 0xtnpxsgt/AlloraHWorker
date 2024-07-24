@@ -28,15 +28,43 @@ pip install allocmd --upgrade
 
 #### Step 3: Install Allora ( This will take time )
 ```bash
-rm -rf allora.sh
+rm -rf allorahuggingface.sh
 wget https://raw.githubusercontent.com/0xtnpxsgt/AlloraHWorker/main/allorahuggingface.sh && chmod +x allorahuggingface.sh && ./allorahuggingface.sh
 ```
-- In the middle of the command execution, it will ask for keyring phrase, Here you need write a password (example : 12345678)
-- During pasting `HEAD_ID` , Don't use `Ctrl+C` to copy and `Ctrl+V` to paste, instead just select the whole `KEY_ID` and Press Right Click
+
+#### Step 3: Install Allora ( This will take time )
+```bash
+sudo groupadd docker && sudo usermod -aG docker $USER
+```
+
+#### Step 4: 
+```bash
+nano app.py
+```
+- Replace API with your `COINGECKO API` , then save `Ctrl+X Y ENTER`.
+![image](https://github.com/user-attachments/assets/3a17b3b4-4cf8-4677-bf31-cbcdd079f516)
+
+#### Step 4: 
+```bash
+nano huggingmodel5/worker/config.yaml
+```
+- Replace API with your `COINGECKO API` , then save `Ctrl+X Y ENTER`.
 
 
 #### Step 4: 
----------------------------------------------------------------
+```bash
+nano huggingmodel5/worker/config.yaml
+```
+- Replace API with your `COINGECKO API` , then save `Ctrl+X Y ENTER`.
 
-- Copy & Paste the following code. - to exit `Ctrl+X Y Enter` to save YML FILE
-- Replace `head-id` & `WALLET_SEED_PHRASE` in worker-1 and worker-2 containers
+
+
+
+
+
+
+
+
+
+
+
