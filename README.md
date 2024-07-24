@@ -71,6 +71,18 @@ docker version
 ```bash
 sudo groupadd docker && sudo usermod -aG docker $USER
 ```
+```bash
+# Clone repository Allora CLI
+git clone https://github.com/allora-network/allora-chain.git
+```
+```bash
+# Install Allora Appchain CLI
+cd allora-chain && make all
+```
+```bash
+# Check versi dari Allora Appchain CLI
+allorad version
+```
 
 #### Step 4: Install Worker
 ```bash
