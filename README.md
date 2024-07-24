@@ -83,11 +83,12 @@ cd allora-chain && make all
 # Check versi dari Allora Appchain CLI
 allorad version
 ```
+
+
+## Step 4: Install Worker
 ```bash
 cd
 ```
-
-## Step 4: Install Worker
 ```bash
 wget https://raw.githubusercontent.com/0xtnpxsgt/AlloraHWorker/main/allorahuggingface.sh && chmod +x allorahuggingface.sh && ./allorahuggingface.sh
 ```
