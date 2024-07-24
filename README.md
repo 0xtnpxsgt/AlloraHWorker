@@ -88,8 +88,6 @@ allorad version
 ## Step 4: Install Worker
 ```bash
 cd
-```
-```bash
 wget https://raw.githubusercontent.com/0xtnpxsgt/AlloraHWorker/main/allorahuggingface.sh && chmod +x allorahuggingface.sh && ./allorahuggingface.sh
 ```
 
