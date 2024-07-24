@@ -44,7 +44,7 @@ if [[ "$installdep" =~ ^[Yy]$ ]]; then
     echo
     
     echo -e "${BOLD}${DARK_YELLOW}Installing packages...${RESET}"
-    execute_with_prompt "sudo apt install ca-certificates zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev curl git wget make jq build-essential pkg-config lsb-release libssl-dev libreadline-dev libffi-dev gcc screen unzip lz4 -y"
+    execute_with_prompt "sudo apt-get install -y apt-transport-https software-properties-common ca-certificates zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev curl git wget make jq build-essential pkg-config lsb-release libssl-dev libreadline-dev libffi-dev gcc screen unzip lz4"
     echo
     
     echo -e "${BOLD}${DARK_YELLOW}Installing python3...${RESET}"
@@ -52,13 +52,22 @@ if [[ "$installdep" =~ ^[Yy]$ ]]; then
     echo
     
     echo -e "${BOLD}${DARK_YELLOW}Installing Docker...${RESET}"
-    execute_with_prompt 'curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg'
+    execute_with_prompt 'sudo install -m 0755 -d /etc/apt/keyrings'
     echo
-    execute_with_prompt 'echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null'
+    execute_with_prompt 'sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc'
     echo
-    execute_with_prompt 'sudo apt-get update'
+    execute_with_prompt 'sudo chmod a+r /etc/apt/keyrings/docker.asc'
     echo
-    execute_with_prompt 'sudo apt-get install docker-ce docker-ce-cli containerd.io -y'
+    execute_with_prompt 'echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null'
+    echo
+	execute_with_prompt 'sudo apt-get update'
+    echo
+	execute_with_prompt 'sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin'
+    echo
+	execute_with_prompt 'sudo groupadd docker && sudo usermod -aG docker $USER'
     echo
     
     echo -e "${BOLD}${DARK_YELLOW}Checking docker version...${RESET}"
@@ -76,34 +85,53 @@ if [[ "$installdep" =~ ^[Yy]$ ]]; then
     echo -e "${BOLD}${DARK_YELLOW}Checking docker-compose version...${RESET}"
     execute_with_prompt 'docker-compose --version'
     echo
+	
+	
     
     echo -e "${BOLD}${DARK_YELLOW}Installing Go...${RESET}"
-    execute_with_prompt 'cd $HOME'
+    execute_with_prompt 'sudo rm -rf /usr/local/go'
     echo
-    execute_with_prompt 'ver="1.21.3" && wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"'
+    execute_with_prompt 'curl -L https://go.dev/dl/go1.22.4.linux-amd64.tar.gz | sudo tar -xzf - -C /usr/local'
     echo
-    execute_with_prompt 'sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"'
-    echo
-    execute_with_prompt 'rm "go$ver.linux-amd64.tar.gz"'
-    echo
-    execute_with_prompt 'echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile'
+    execute_with_prompt 'echo 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin' >> $HOME/.bash_profile && echo 'export PATH=$PATH:$(go env GOPATH)/bin' >> $HOME/.bash_profile'
     echo
     execute_with_prompt 'source $HOME/.bash_profile'
     echo
-    echo 'export PATH=$PATH:$(go env GOPATH)/bin' >> $HOME/.bash_profile
-    source .bash_profile
-    
-    
+
     echo -e "${BOLD}${DARK_YELLOW}Checking go version...${RESET}"
     execute_with_prompt 'go version'
     echo
-    
+	
+	echo -e "${BOLD}${DARK_YELLOW}Installing Python...${RESET}"
+    execute_with_prompt 'sudo apt install python3'
+    echo
+	execute_with_prompt 'python3 --version'
+    echo
+	
+	echo -e "${BOLD}${DARK_YELLOW}Installing PIP...${RESET}"
+    execute_with_prompt 'sudo apt install python3-pip'
+    echo
+	execute_with_prompt 'pip3 --version'
+    echo
+	
+	echo -e "${BOLD}${DARK_YELLOW}Installing AlloraChain...${RESET}"
+    execute_with_prompt 'git clone https://github.com/allora-network/allora-chain.git'
+    echo
+	execute_with_prompt 'cd allora-chain && make all'
+    echo
+	execute_with_prompt 'allorad version'
+    echo
+	
     echo -e "${BOLD}${DARK_YELLOW}Install allocmd...${RESET}"
     execute_with_prompt 'pip install allocmd --upgrade'
     echo
 fi
 
 echo -e "${BOLD}${UNDERLINE}${DARK_YELLOW}Continuce Installing worker node...${RESET}"
+
+echo -e "${BOLD}${DARK_YELLOW}Install allocmd...${RESET}"
+execute_with_prompt 'allorad keys add --recover --keyring-backend file'
+echo
 
 printf 'Choose a Worker Topic ETH/BTC/SOL (2, 4, 5 Active updated: 24/07/2024): ... '
 read CHOICE
