@@ -1,0 +1,47 @@
+version: "3.8"
+services:
+  inference:
+    container_name: inference-hf
+    build:
+      context: .
+      dockerfile: Dockerfile_inference
+    command: python -u /app/app.py
+    ports:
+      - "8000:8000"
+  init_faceworker:
+    container_name: init_faceworker7
+    image: alloranetwork/allora-chain:latest
+    volumes:
+      - ./data:/data
+    entrypoint: /data/scripts/init.sh
+
+  faceworker:
+    container_name: faceworker7
+    build: .
+    command:
+      - allora-node
+      - --role=worker
+      - --peer-db=/data/worker/peer-database
+      - --function-db=/data/worker/function-database
+      - --runtime-path=/app/runtime
+      - --runtime-cli=bls-runtime
+      - --workspace=/data/worker/workspace
+      - --private-key=/data/worker/key/priv.bin
+      - --log-level=debug
+      - --port=9010
+      - --boot-nodes=/dns4/head-0-p2p.edgenet.allora.network/tcp/32080/p2p/12D3KooWQgcJ4wiHBWE6H9FxZAVUn84ZAmywQdRk83op2EibWTiZ,/dns4/head-1-p2p.edgenet.allora.network/tcp/32081/p2p/12D3KooWCyao1YJ9DDZEAV8ZUZ1MLLKbcuxVNju1QkTVpanN9iku,/dns4/head-2-p2p.edgenet.allora.network/tcp/32082/p2p/12D3KooWKZYNUWBjnAvun6yc7EBnPvesX23e5F4HGkEk1p5Q7JfK
+      - --topic=allora-topic-7-worker
+      - --allora-node-rpc-address=https://allora-rpc.edgenet.allora.network/
+      - --allora-chain-home-dir=/data/.allorad
+      - --allora-chain-key-name=faceworker
+      - --allora-chain-topic-id=7
+    volumes:
+      - type: bind
+        source: ./data
+        target: /data
+    env_file:
+      - .env
+    ports:
+      - "9010:9010"
+    depends_on:
+      - init_faceworker
