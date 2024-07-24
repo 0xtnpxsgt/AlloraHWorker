@@ -105,9 +105,9 @@ nano huggingmodel5/worker/app.py
 
 ## Step 6: Get Wallet Hex PK & Edit Config file
 ```bash
-# Hex Pk
+# Hex Pk -  Here change the no: 5 with your topic id (Huggingmodel5)
 
-allorad keys export huggingmodel4 --keyring-backend test --unarmored-hex --unsafe
+allorad keys export huggingmodel5 --keyring-backend test --unarmored-hex --unsafe
 ```
 ---------------------------------------------------------------
 
