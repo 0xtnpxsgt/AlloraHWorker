@@ -123,7 +123,11 @@ nano huggingmodel5/worker/config.yaml
 
 ![Screenshot 2024-07-24 101210](https://github.com/user-attachments/assets/2132c9ca-2d0f-46c6-a2ea-5db9096fe6e6)
 
+
 ## Step 7: Build your Worker
+```bash
+allocmd generate worker --env prod --network allora-testnet-1
+```
 ```bash
 docker compose -f prod-docker-compose.yaml up --build -d
 ```
