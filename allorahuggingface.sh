@@ -59,28 +59,16 @@ if [[ "$installdep" =~ ^[Yy]$ ]]; then
     echo
 	
 	
-	echo -e "${BOLD}${DARK_YELLOW}Installing Python...${RESET}"
+    echo -e "${BOLD}${DARK_YELLOW}Installing Python...${RESET}"
     execute_with_prompt 'sudo apt install python3'
     echo
 	execute_with_prompt 'python3 --version'
     echo
 	
-	echo -e "${BOLD}${DARK_YELLOW}Installing PIP...${RESET}"
+    echo -e "${BOLD}${DARK_YELLOW}Installing PIP...${RESET}"
     execute_with_prompt 'sudo apt install python3-pip'
     echo
-	execute_with_prompt 'pip3 --version'
-    echo
-	
-	echo -e "${BOLD}${DARK_YELLOW}Installing AlloraChain...${RESET}"
-    execute_with_prompt 'git clone https://github.com/allora-network/allora-chain.git'
-    echo
-	execute_with_prompt 'cd allora-chain && make all'
-    echo
-	execute_with_prompt 'allorad version'
-    echo
-
-    echo -e "${BOLD}${DARK_YELLOW}Install allocmd...${RESET}"
-    execute_with_prompt 'cd'
+    execute_with_prompt 'pip3 --version'
     echo
 	
     echo -e "${BOLD}${DARK_YELLOW}Install allocmd...${RESET}"
