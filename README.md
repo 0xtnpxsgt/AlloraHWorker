@@ -74,10 +74,15 @@ docker compose -f prod-docker-compose.yaml up --build -d
 ```bash
 docker compose -f prod-docker-compose.yaml logs -f
 ```
+![image](https://github.com/user-attachments/assets/5fbed3cc-7cf8-4f6b-8329-7f9b37ddf77a)
 
 
+#### TEST WORKER
+```bash
+curl http://localhost:8000/inference/ETH
+```
 
-
+Result '{"value":"2564.021586281073"}'
 
 
 
