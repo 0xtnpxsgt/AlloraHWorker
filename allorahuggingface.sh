@@ -104,15 +104,6 @@ wget -q https://raw.githubusercontent.com/0xtnpxsgt/AlloraHWorker/main/main.py -
 wget -q https://raw.githubusercontent.com/0xtnpxsgt/AlloraHWorker/main/requirements.txt -O ./huggingmodel${CHOICE}/worker/requirements.txt
 echo
 
-echo -e "${BOLD}${DARK_YELLOW}Export private key:${RESET}"
-allorad keys export huggingmodel${CHOICE} --keyring-backend test --unarmored-hex --unsafe
-echo
-wait
-printf '(PASTE) YOUR HEX_CODE_PK HERE: ... '
-read HEX
-
-sed -i "s/hex_coded_pk: ''/hex_coded_pk: $HEX/g" /root/huggingmodel${CHOICE}/worker/config.yaml
-
 cd /root/huggingmodel${CHOICE}/worker
 execute_with_prompt 'allocmd generate worker --env prod --network allora-testnet-1'
 execute_with_prompt 'chmod -R +rx ./data/scripts'
