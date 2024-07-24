@@ -69,18 +69,23 @@ docker version
 sudo groupadd docker && sudo usermod -aG docker $USER
 ```
 ```bash
-# Clone repository Allora CLI
 git clone https://github.com/allora-network/allora-chain.git
 ```
 ```bash
-# Install Allora Appchain CLI
 cd allora-chain && make all
 ```
 ```bash
-# Check versi dari Allora Appchain CLI
 allorad version
 ```
 
+## Install GO
+```bash
+sudo rm -rf /usr/local/go
+curl -L https://go.dev/dl/go1.22.4.linux-amd64.tar.gz | sudo tar -xzf - -C /usr/local
+echo 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin' >> $HOME/.bash_profile && echo 'export PATH=$PATH:$(go env GOPATH)/bin' >> $HOME/.bash_profile
+source $HOME/.bash_profile
+go version
+```
 
 ## Step 4: Install Worker
 ```bash
