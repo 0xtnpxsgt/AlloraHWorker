@@ -126,7 +126,7 @@ fi
 echo -e "${BOLD}${UNDERLINE}${DARK_YELLOW}Continuce Installing worker node...${RESET}"
 
 echo -e "${BOLD}${DARK_YELLOW}Install allocmd...${RESET}"
-execute_with_prompt 'allorad keys add --recover --keyring-backend file'
+execute_with_prompt 'allorad keys add testkey --recover'
 echo
 
 printf 'Choose a Worker Topic ETH/BTC/SOL (2, 4, 5 Active updated: 24/07/2024): ... '
