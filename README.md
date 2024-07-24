@@ -84,8 +84,7 @@ curl http://localhost:8000/inference/ETH
 
 Result '{"value":"2564.021586281073"}'
 
-
-
+- Congratulations! Your worker node running the Hugging Face model is now up and running
 
 
 
