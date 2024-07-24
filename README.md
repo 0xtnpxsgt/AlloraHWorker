@@ -24,6 +24,17 @@ docker rm -f $(docker ps -a -q);docker system prune --volumes -a -f
 --------------------------------------------------------------------
 
 #### Step 1: 
+
+# Update APT
+```bash
+sudo apt-get update
+```
+
+# Install package docker
+```bash
+sudo apt-get install -y apt-transport-https software-properties-common ca-certificates zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev curl git wget make jq build-essential pkg-config lsb-release libssl-dev libreadline-dev libffi-dev gcc screen unzip lz4 
+```
+
 ```bash
 docker stop $(docker ps -aq) && docker rm $(docker ps -aq) && docker rmi -f $(docker images -aq)
 docker rm -f $(docker ps -a -q)
