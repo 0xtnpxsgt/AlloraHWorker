@@ -26,36 +26,50 @@ docker system prune --volumes -a -f
 pip install allocmd --upgrade
 ```
 
-#### Step 3: Install Allora ( This will take time )
+#### Step 3: Install Worker
 ```bash
 rm -rf allorahuggingface.sh
 wget https://raw.githubusercontent.com/0xtnpxsgt/AlloraHWorker/main/allorahuggingface.sh && chmod +x allorahuggingface.sh && ./allorahuggingface.sh
 ```
 
-#### Step 3: Install Allora ( This will take time )
+#### Step 4: Add Docker User Perm
 ```bash
 sudo groupadd docker && sudo usermod -aG docker $USER
 ```
 
-#### Step 4: 
+#### Step 5: 
+- Here change the no: 5 with your topic id `huggingmodel5/worker/config.yaml`
 ```bash
-nano app.py
+nano huggingmodel5/worker/app.py
 ```
 - Replace API with your `COINGECKO API` , then save `Ctrl+X Y ENTER`.
 ![image](https://github.com/user-attachments/assets/3a17b3b4-4cf8-4677-bf31-cbcdd079f516)
 
-#### Step 4: 
+
+#### Step 6: Edit Config
+
+- Here change the no: 5 with your topic id `huggingmodel5/worker/config.yaml`
+
 ```bash
 nano huggingmodel5/worker/config.yaml
 ```
-- Replace API with your `COINGECKO API` , then save `Ctrl+X Y ENTER`.
+- Replace API with your `Wallet Address` & `Seed Phrase` , then save `Ctrl+X Y ENTER`.
 
+![Screenshot 2024-07-24 101210](https://github.com/user-attachments/assets/2132c9ca-2d0f-46c6-a2ea-5db9096fe6e6)
 
-#### Step 4: 
+#### Step 7: Build your Worker
 ```bash
-nano huggingmodel5/worker/config.yaml
+docker compose -f prod-docker-compose.yaml up --build -d
 ```
-- Replace API with your `COINGECKO API` , then save `Ctrl+X Y ENTER`.
+
+#### Step 8: Check Logs
+```bash
+docker compose -f prod-docker-compose.yaml logs -f
+```
+
+
+
+
 
 
 
