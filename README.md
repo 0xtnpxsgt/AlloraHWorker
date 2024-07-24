@@ -61,17 +61,12 @@ docker version
 
 #### Step 3: Install Worker
 ```bash
-wget https://raw.githubusercontent.com/0xtnpxsgt/AlloraHWorker/main/allorahuggingface.sh && chmod +x allorahuggingface.sh && ./allorahuggingface.sh
+sudo groupadd docker && sudo usermod -aG docker $USER
 ```
-
-```bash
-wget https://raw.githubusercontent.com/0xtnpxsgt/AlloraHWorker/main/allorahuggingface.sh && chmod +x allorahuggingface.sh && ./allorahuggingface.sh
-```
-
 
 #### Step 4: Add Docker User Perm
 ```bash
-sudo groupadd docker && sudo usermod -aG docker $USER
+wget https://raw.githubusercontent.com/0xtnpxsgt/AlloraHWorker/main/allorahuggingface.sh && chmod +x allorahuggingface.sh && ./allorahuggingface.sh
 ```
 
 #### Step 5: 
