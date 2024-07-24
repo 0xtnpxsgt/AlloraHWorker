@@ -34,6 +34,9 @@ docker system prune --volumes -a -f
 ```bash
 pip install allocmd --upgrade
 ```
+----------------------------------------------------
+- Install Docker
+
 ```bash
 # Docker GPG key
 sudo install -m 0755 -d /etc/apt/keyrings
