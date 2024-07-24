@@ -89,9 +89,16 @@ if [[ "$installdep" =~ ^[Yy]$ ]]; then
     echo
 	execute_with_prompt 'allorad version'
     echo
+
+    echo -e "${BOLD}${DARK_YELLOW}Install allocmd...${RESET}"
+    execute_with_prompt 'cd'
+    echo
 	
     echo -e "${BOLD}${DARK_YELLOW}Install allocmd...${RESET}"
     execute_with_prompt 'pip install allocmd --upgrade'
+    echo
+    echo -e "${BOLD}${DARK_YELLOW}Back to Main Directory...${RESET}"
+    execute_with_prompt 'cd'
     echo
 fi
 
