@@ -36,9 +36,6 @@ sudo apt-get install -y apt-transport-https software-properties-common ca-certif
 ```
 
 ## Step 2: 
-```bash
-pip install allocmd --upgrade
-```
 ----------------------------------------------------
 - Install Docker
 
