@@ -129,9 +129,11 @@ nano huggingmodel5/worker/config.yaml
 #Here change the no: 5 with your topic id - huggingmodel5
 cd huggingmodel5/worker
 ```
-
 ```bash
 allocmd generate worker --env prod --network allora-testnet-1
+```
+```bash
+chmod -R +rx ./data/scripts
 ```
 ```bash
 docker compose -f prod-docker-compose.yaml up --build -d
