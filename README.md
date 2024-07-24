@@ -14,8 +14,8 @@ Storage: SSD or NVMe with at least 5GB of space.
 ```
 
 ### Deployment - Read Carefully! 
-
-DON'T EXECUTE THESE 2 COMMANDS ON VPS WHERE YOU ARE RUNNING OTHER NODES, JUST SKIP THIS PART 1 AND MOVE TO PART 2
+```
+# DON'T EXECUTE THESE 2 COMMANDS ON VPS WHERE YOU ARE RUNNING OTHER NODES, JUST SKIP THIS PART 1 AND MOVE TO PART 2
 ```bash
 docker stop $(docker ps -aq) && docker rm $(docker ps -aq) && docker rmi -f $(docker images -aq)
 docker rm -f $(docker ps -a -q);docker system prune --volumes -a -f
