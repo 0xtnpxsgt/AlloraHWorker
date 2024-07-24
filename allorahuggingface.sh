@@ -58,17 +58,10 @@ if [[ "$installdep" =~ ^[Yy]$ ]]; then
     echo
     execute_with_prompt 'sudo chmod +x /usr/local/bin/docker-compose'
     echo
-    
     echo -e "${BOLD}${DARK_YELLOW}Checking docker-compose version...${RESET}"
     execute_with_prompt 'docker-compose --version'
     echo
 	
-	
-    
-
-    echo -e "${BOLD}${DARK_YELLOW}Checking go version...${RESET}"
-    execute_with_prompt 'go version'
-    echo
 	
 	echo -e "${BOLD}${DARK_YELLOW}Installing Python...${RESET}"
     execute_with_prompt 'sudo apt install python3'
@@ -103,10 +96,6 @@ if [[ "$installdep" =~ ^[Yy]$ ]]; then
 fi
 
 echo -e "${BOLD}${UNDERLINE}${DARK_YELLOW}Continuce Installing worker node...${RESET}"
-
-echo -e "${BOLD}${DARK_YELLOW}Install allocmd...${RESET}"
-execute_with_prompt 'allorad keys add testkey --recover'
-echo
 
 printf 'Choose a Worker Topic ETH/BTC/SOL (2, 4, 5 Active updated: 24/07/2024): ... '
 read CHOICE
