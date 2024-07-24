@@ -37,7 +37,6 @@ pip install allocmd --upgrade
 
 #### Step 3: Install Worker
 ```bash
-rm -rf allorahuggingface.sh
 wget https://raw.githubusercontent.com/0xtnpxsgt/AlloraHWorker/main/allorahuggingface.sh && chmod +x allorahuggingface.sh && ./allorahuggingface.sh
 ```
 
