@@ -83,6 +83,9 @@ cd allora-chain && make all
 # Check versi dari Allora Appchain CLI
 allorad version
 ```
+```bash
+cd
+```
 
 ## Step 4: Install Worker
 ```bash
