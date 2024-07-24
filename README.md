@@ -96,7 +96,10 @@ wget https://raw.githubusercontent.com/0xtnpxsgt/AlloraHWorker/main/allorahuggin
 ```bash
 nano huggingmodel5/worker/app.py
 ```
+- Create Account Here: https://www.coingecko.com/en/developers/dashboard
+
 - Replace API with your `COINGECKO API` , then save `Ctrl+X Y ENTER`.
+
 ![image](https://github.com/user-attachments/assets/3a17b3b4-4cf8-4677-bf31-cbcdd079f516)
 
 
@@ -107,7 +110,7 @@ nano huggingmodel5/worker/app.py
 ```bash
 nano huggingmodel5/worker/config.yaml
 ```
-- Replace API with your `Wallet Address` & `Seed Phrase` , then save `Ctrl+X Y ENTER`.
+- Replace `Wallet Address` & `Seed Phrase` , then save `Ctrl+X Y ENTER`.
 
 ![Screenshot 2024-07-24 101210](https://github.com/user-attachments/assets/2132c9ca-2d0f-46c6-a2ea-5db9096fe6e6)
 
